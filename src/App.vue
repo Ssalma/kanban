@@ -1,13 +1,27 @@
 <template>
   <router-view />
+  <!-- <div>
+    <button @click="changeTheme('dark')">dark</button>
+    <button @click="changeTheme('light')">light</button>
+  </div> -->
 </template>
 
+<script>
+export default {
+  data: () => ({
+    theme: "light",
+  }),
+  mounted() {
+    this.changeTheme("light");
+  },
+  methods: {
+    changeTheme(newTheme) {
+      document.documentElement.setAttribute("data-theme", newTheme);
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import "./assets/styles.scss";
 </style>

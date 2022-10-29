@@ -1,0 +1,66 @@
+.kebab {
+  position: relative;
+  &-btn {
+    padding: 0.4rem;
+    border: none;
+    background: transparent;
+  }
+}
+
+.dropdown {
+  &__menu {
+    position: absolute;
+    right: 3.2rem;
+    top: 6.2rem;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    transition: all 200ms ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 13899;
+    &.show {
+      max-height: 100vh;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    ul li {
+      list-style-type: none;
+    }
+  }
+  &__item {
+    display: flex;
+    input {
+      visibility: hidden;
+      position: absolute;
+      width: 100%;
+      &:checked + label {
+        background: #e0eaf8;
+        color: var(--purple);
+      }
+    }
+    &-label {
+      min-width: 14rem;
+      font-size: 1.3rem;
+      line-height: 2.3rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--medium-grey);
+
+      &-delete {
+        color: var(--red);
+      }
+      &:hover {
+        background: #e0eaf8;
+        color: var(--purple);
+      }
+    }
+  }
+}

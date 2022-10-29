@@ -1,0 +1,50 @@
+.custom__btn {
+ --btn-color: #ffffff;
+  .btn {
+    width: 100%;
+    border-radius: 2.4rem;
+    color: var(--btn-color);
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    padding: 1.5rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    transition: all 300ms;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+
+    &--primary {
+     background: var(--purple);
+     &:hover {
+      background: var(--purple-light);
+     }
+    }
+
+    &--secondary {
+     background: rgba(99, 95, 199, 0.1);
+     color: var(--purple);
+     &:hover {
+      background: rgba(99, 95, 199, 0.25);
+     }
+    }
+
+    &--destructive {
+     background: var(--red);
+     color: var(--btn-color);
+     &:hover {
+      background: var(--red-hover);
+     }
+    }
+
+    &--small {
+     width: max-content;
+     padding: 1.4rem 2.5rem;
+    }
+
+    &--large {
+     width: 100%;
+    }
+  }
+}

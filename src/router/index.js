@@ -1,11 +1,36 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import { LoginPage, SignupPage } from "../views/Auth";
+import BaseLayout from "../layout/BaseLayout.vue";
+import BoardsPage from "../views/Boards/Board.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/components",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/",
+    name: "home",
+    component: BaseLayout,
+    children: [
+      {
+        path: "boards/:id",
+        name: "Boards",
+        component: BoardsPage,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: LoginPage,
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: SignupPage,
   },
   // {
   //   path: "/about",
