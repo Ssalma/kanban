@@ -8,7 +8,7 @@
         <div v-for="board in boards" :key="board.id">
           <SidebarItem :board="board.name" :id="board.id" />
         </div>
-        <create-board></create-board>
+        <create-board @create-board="$emit('createBoard')"></create-board>
       </div>
     </div>
     <div class="toggle-hide-sidebar">
@@ -30,8 +30,9 @@ import KToggle from "../Button/Toggle.vue";
 import KText from "../Text/Text.vue";
 import KLogo from "./Logo.vue";
 import SidebarItem from "./SidebarItem";
-import CreateBoard from "./CreateBoard.vue";
+import CreateBoard from "./CreateBoardButton.vue";
 import HideSidebar from "./HideSidebar.vue";
+// import KModal from "../Modal/Modal.vue";
 
 export default {
   name: "SideBar",
@@ -42,6 +43,7 @@ export default {
     SidebarItem,
     CreateBoard,
     HideSidebar,
+    // KModal,
   },
   props: {
     close: {
@@ -56,6 +58,7 @@ export default {
     dark: dark,
     eye: eyeSlash,
     mode: false,
+    createBoard: false,
   }),
   methods: {
     changeTheme(newTheme) {
@@ -78,7 +81,7 @@ export default {
   width: 30rem;
   display: grid;
   grid: max-content auto max-content / 1fr;
-  border-right: 1px solid var(--lines);
+  border-right: 1px solid var(--lines1);
 
   .toggle-theme {
     width: 100%;

@@ -7,6 +7,11 @@
   }
 }
 
+.not-show{
+  opacity: 0;
+  visibility: visible;
+}
+
 .dropdown {
   &__menu {
     position: absolute;

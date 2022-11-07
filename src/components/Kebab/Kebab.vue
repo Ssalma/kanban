@@ -6,9 +6,8 @@
     <div
       :class="[
         'dropdown__menu',
-        show ? 'show' : '',
+        show ? 'show' : 'not-show',
         'filter-dropdown__menu',
-        show ? 'show' : '',
       ]"
     >
       <ul class="dropdown__list">
@@ -42,37 +41,34 @@
 import kebab from "../../assets/kebab.svg";
 export default {
   name: "KKebab",
+  data: () => ({
+    kebab: kebab,
+    show: false,
+    selectedOption: "",
+  }),
   props: {
     options: {
       type: Array,
       required: true,
     },
+    value: {
+      type: String,
+    },
   },
   computed: {
-    selectedOption: {
-      get() {
-        return this.value;
-      },
-      set(value) {
-        if (typeof value === "string") {
-          this.$emit("input", value);
-          this.$emit("change", value);
-        }
-      },
-    },
     id() {
       return Math.floor(Math.random() * 90000) + 10000;
     },
   },
   watch: {
-    selectedOption() {
-      this.show = false;
+    selectedOption: {
+      deep: true,
+      immediate: true,
+      handler() {
+        this.show = false;
+      },
     },
   },
-  data: () => ({
-    kebab: kebab,
-    show: false,
-  }),
 
   methods: {
     toggle() {

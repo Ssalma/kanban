@@ -29,6 +29,13 @@
       background: rgba(99, 95, 199, 0.25);
      }
     }
+    &--secondary-type2 {
+     background: var(--puple-light-to-white);
+     color: var(--purple);
+     &:hover {
+      background: rgba(99, 95, 199, 0.25);
+     }
+    }
 
     &--destructive {
      background: var(--red);
@@ -41,6 +48,11 @@
     &--small {
      width: max-content;
      padding: 1.4rem 2.5rem;
+    }
+    &--slim {
+     padding: 0.8rem;
+     height: 4rem;
+     font-size: 1.3rem;
     }
 
     &--large {

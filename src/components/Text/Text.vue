@@ -35,6 +35,13 @@ export default {
   line-height: 1.5rem;
   letter-spacing: 2.4px;
 }
+
+%vsmall {
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+  color: #828fa3;
+}
 .text {
   --text-grey: #828fa3;
   --text-white: #ffffff;
@@ -48,6 +55,10 @@ export default {
   &--24-grey {
     @extend %large;
     color: var(--medium-grey);
+  }
+  &--24-grey-grey {
+    @extend %large;
+    color: var(--text-grey);
   }
   &--18-black {
     @extend %medium;
@@ -69,9 +80,18 @@ export default {
     @extend %small;
     color: var(--text-white);
   }
+  &--13-grey {
+    @extend %vsmall;
+    color: var(--text-grey);
+  }
   &--12-grey {
     @extend %xsmall;
     color: var(--medium-grey);
+  }
+  &--12-grey-grey {
+    @extend %xsmall;
+    letter-spacing: 0.4px;
+    color: var(--text-grey);
   }
 }
 </style>

@@ -9,9 +9,17 @@
         'input',
         warning ? 'input--error' : '',
         size ? `input--${size}` : '',
+        dynamic ? 'input--dynamic' : '',
       ]"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+    />
+    <img
+      @click="$emit('remove')"
+      v-if="dynamic"
+      src="@/assets/close.svg"
+      alt="i"
+      :class="['close', label ? 'close--with-label' : '']"
     />
   </div>
 </template>
@@ -19,7 +27,7 @@
 <script>
 export default {
   name: "KInput",
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "remove"],
   props: {
     type: {
       type: String,
@@ -48,6 +56,10 @@ export default {
     size: {
       type: String,
       default: "",
+    },
+    dynamic: {
+      type: Boolean,
+      default: false,
     },
   },
 };
