@@ -16,26 +16,28 @@
     <KCheckbox label="Research competitor pricing and business models" />
     <KCheckbox label="Research competitor pricing and business models" />
     <KCheckbox label="Research competitor pricing and business models" />
+    <KSelect :optionsDisplay="optionsDisplay" />
   </div>
-  <!-- <KSelect :optionsDisplay="optionsDisplay" /> -->
 </template>
 
 <script>
 import { KText, KKebab, KCheckbox } from "@/components";
-// import KSelect from "../Select/Select.vue";
+import KSelect from "../Select/Select.vue";
 export default {
   name: "TaskView",
+  emits: ["edit", "close-task"],
   components: {
     KText,
     KKebab,
     KCheckbox,
-    // KSelect,
+    KSelect,
   },
   data: () => ({
     action: "",
     optionsDisplay: {
-      value: "fjgdfsahf",
-      label: "hfdmahsdajh",
+      todo: "todo",
+      doing: "doing",
+      done: "done",
     },
 
     options: [
@@ -52,7 +54,8 @@ export default {
   methods: {
     getAction(e) {
       const val = e.target.value;
-      val === "edit" ? this.$emit("edit", val) : this.$emit("deleteBoard", val);
+      console.log(val);
+      val === "edit" ? this.$emit("edit", val) : this.$emit("close-task", val);
     },
   },
 };

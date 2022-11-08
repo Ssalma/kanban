@@ -6,7 +6,7 @@
       >
       <k-button variant="primary" size="small">+ Add New Column</k-button>
     </div>
-    <KSelect />
+
     <div class="content">
       <div class="content-item">
         <div v-for="(item, k) in boardData" :key="k">
@@ -37,7 +37,7 @@
     <EditBoard @close-edit="toggleEdit" />
   </k-modal>
   <k-modal v-if="showTask">
-    <TaskView @close-edit="toggleEdit" />
+    <TaskView @edit="toggleTaskModal" @close-task="toggleTaskModal" />
   </k-modal>
 </template>
 
@@ -50,7 +50,6 @@ import {
   KModal,
   EditBoard,
   TaskView,
-  KSelect,
 } from "@/components";
 import { boardData, colors } from "./Board";
 export default {
@@ -63,7 +62,6 @@ export default {
     KModal,
     EditBoard,
     TaskView,
-    KSelect,
   },
   data: () => ({
     createBoard: false,
@@ -83,6 +81,9 @@ export default {
     toggleEdit() {
       this.showEditBoard = !this.showEditBoard;
     },
+    toggleTaskModal() {
+      this.showTask = !this.showTask;
+    },
   },
 };
 </script>
@@ -91,7 +92,6 @@ export default {
 .page {
   height: calc(100% - 9.5rem);
   width: 100%;
-  // border: 1px solid red;
   overflow: hidden;
   .empty-state {
     height: calc(100% - 9.5rem);
@@ -114,15 +114,12 @@ export default {
   }
 
   .content {
-    // border: 1px solid green;
     height: calc(100vh - 9.5em);
     width: 100%;
     padding: 2.4rem 0 1.6rem 2.4rem;
     overflow: hidden;
 
     &-item {
-      // border: 1px solid magenta;
-      // max-width: 78vw;
       width: 100%;
       height: 100%;
       display: grid;
@@ -131,7 +128,6 @@ export default {
       grid-auto-columns: minmax(28rem, 1fr);
       grid-gap: 2.4rem;
       overflow-x: auto;
-      /* Hide scrollbar for Chrome, Safari and Opera */
       &::-webkit-scrollbar {
         display: none;
       }
@@ -140,8 +136,7 @@ export default {
       scrollbar-width: none; /* Firefox */
 
       @media (min-width: 900px) {
-        // border: 1px solid green;
-        max-width: 75vw;
+        width: 100%;
       }
     }
   }
